@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo1.OtherLabsController"
+            prefWidth="760.0" prefHeight="520.0">
+
+    <!-- Головне меню (за бажанням) -->
+    <top>
+        <VBox>
+            <children>
+                <MenuBar>
+                    <menus>
+                        <Menu text="Дії">
+                            <items>
+                                <MenuItem text="Перевірити відповіді" onAction="#onMenuCheck"/>
+                                <MenuItem text="Скинути" onAction="#onMenuReset"/>
+                                <SeparatorMenuItem/>
+                                <MenuItem text="Закрити" onAction="#onClose"/>
+                            </items>
+                        </Menu>
+                        <Menu text="Довідка">
+                            <items>
+                                <MenuItem text="Про роботу" onAction="#onMenuAbout"/>
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+
+                <Label fx:id="headerLabel" text="Практична робота №6 — Buttons, Menu, CheckBox/ChoiceBox/ComboBox/RadioButton"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"
+                       onContextMenuRequested="#onHeaderContextMenu">
+                    <contextMenu>
+                        <ContextMenu>
+                            <items>
+                                <MenuItem text="Перевірити" onAction="#onMenuCheck"/>
+                                <MenuItem text="Скинути" onAction="#onMenuReset"/>
+                                <SeparatorMenuItem/>
+                                <MenuItem text="Про..." onAction="#onMenuAbout"/>
+                            </items>
+                        </ContextMenu>
+                    </contextMenu>
+                </Label>
+            </children>
+            <padding>
+                <Insets top="10" left="20" right="20" bottom="10"/>
+            </padding>
+            <spacing>8</spacing>
+        </VBox>
+    </top>
+
+    <center>
+        <GridPane hgap="18" vgap="16">
+            <padding>
+                <Insets top="10" left="30" right="30" bottom="10"/>
+            </padding>
+
+            <!-- Q1 -->
+            <Label text="1) Оберіть UI-фреймворки Java (2 правильні):" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+            <VBox spacing="6" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <children>
+                    <CheckBox fx:id="cbJavaFX" text="JavaFX"/>
+                    <CheckBox fx:id="cbSwing" text="Swing"/>
+                    <CheckBox fx:id="cbQt" text="Qt"/>
+                </children>
+            </VBox>
+
+            <!-- Q2 -->
+            <Label text="2) Серверна ОС (умовно):" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <ChoiceBox fx:id="choiceOs" prefWidth="220" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+
+            <!-- Q3 -->
+            <Label text="3) Протокол шифрованого веб-з'єднання:" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <ComboBox fx:id="comboProtocol" prefWidth="220" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <!-- Q4 -->
+            <Label text="4) Оберіть транспортний протокол з надійною доставкою:" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+            <HBox spacing="16" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                <children>
+                    <RadioButton fx:id="rbTcp" text="TCP"/>
+                    <RadioButton fx:id="rbUdp" text="UDP"/>
+                    <RadioButton fx:id="rbIcmp" text="ICMP"/>
+                </children>
+            </HBox>
+
+        </GridPane>
+    </center>
+
+    <bottom>
+        <VBox spacing="10">
+            <children>
+                <HBox alignment="CENTER" spacing="12">
+                    <children>
+                        <Button text="Перевірити" onAction="#onCheckAnswers" prefWidth="140"/>
+                        <Button text="Скинути" onAction="#onReset" prefWidth="140"/>
+                        <Button text="Закрити" onAction="#onClose" prefWidth="140"/>
+                    </children>
+                </HBox>
+
+                <Label fx:id="resultLabel" text="Кількість правильних відповідей: 0" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            </children>
+            <padding>
+                <Insets top="0" left="20" right="20" bottom="20"/>
+            </padding>
+        </VBox>
+    </bottom>
+
+</BorderPane>
